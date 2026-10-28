@@ -1,0 +1,44 @@
+services:
+  - type: web
+    name: almacen-tungasuca
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm ci --include=dev && npm run build && npm run migration:run:prod && npm run seed:demo:prod
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: DB_SSL
+        value: 'true'
+      - key: JWT_ACCESS_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: COMPANY_NAME
+        value: Consorcio Tungasuca
+      - key: COMPANY_RUC
+        sync: false
+      - key: COMPANY_ADDRESS
+        value: Cusco - Perú
+      - key: COMPANY_PHONE
+        sync: false
+      - key: COMPANY_EMAIL
+        sync: false
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        value: '587'
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASSWORD
+        sync: false
+      - key: SMTP_FROM
+        value: Almacén Tungasuca <no-reply@tungasuca.pe>
+      - key: ALERT_EMAIL_RECIPIENTS
+        sync: false
+      - key: STOCK_CHECK_CRON
+        value: 0 7 * * *

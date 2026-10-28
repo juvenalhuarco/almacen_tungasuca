@@ -1,0 +1,32 @@
+{
+  "name": "almacen-tungasuca",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sistema web de control de inventarios con alertas automáticas por niveles mínimos de existencias - Consorcio Tungasuca",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,client -c blue,green \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w client && npm run build -w server",
+    "start": "npm run start -w server",
+    "migration:run": "npm run migration:run -w server",
+    "migration:revert": "npm run migration:revert -w server",
+    "seed": "npm run seed -w server",
+    "seed:demo": "npm run seed:demo -w server",
+    "migration:run:prod": "npm run migration:run:prod -w server",
+    "seed:prod": "npm run seed:prod -w server",
+    "seed:demo:prod": "npm run seed:demo:prod -w server",
+    "test": "npm run test -w server",
+    "lint": "npm run lint -w server && npm run lint -w client",
+    "format": "prettier --write \"server/src/**/*.ts\" \"client/src/**/*.{ts,tsx}\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "prettier": "^3.3.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
