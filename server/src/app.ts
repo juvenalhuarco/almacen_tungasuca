@@ -31,7 +31,11 @@ export function createApp(): Express {
   app.use(express.urlencoded({ extended: true }));
   app.use(cookieParser());
   if (!env.isTest) {
-    app.use(morgan(env.isProduction ? 'combined' : 'dev'));
+    app.use(
+      morgan(env.isProduction ? 'combined' : 'dev', {
+        skip: (req) => req.path === '/api/health',
+      }),
+    );
   }
 
   app.use(
