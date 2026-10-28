@@ -11,7 +11,8 @@ services:
       - key: NODE_ENV
         value: production
       - key: DATABASE_URL
-        sync: false
+        value: postgresql://neondb_owner:npg_xL05iPjEOyQn@ep-late-cell-arbvzm46-pooler.c-4.us-west-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+        sync: true
       - key: DB_SSL
         value: 'true'
       - key: JWT_ACCESS_SECRET
@@ -29,16 +30,20 @@ services:
       - key: COMPANY_EMAIL
         sync: false
       - key: SMTP_HOST
-        sync: false
+        value: smtp.gmail.com
+        sync: true
       - key: SMTP_PORT
         value: '587'
       - key: SMTP_USER
-        sync: false
+        value: 'juvenalhuarco09@gmail.com'
+        sync: true
       - key: SMTP_PASSWORD
+        value: 'uiwx yeyx vjah dnwn'
         sync: false
       - key: SMTP_FROM
         value: Almacén Tungasuca <no-reply@tungasuca.pe>
       - key: ALERT_EMAIL_RECIPIENTS
-        sync: false
+        value: 'juvenalhuarco09@gmail.com'
+        sync: true
       - key: STOCK_CHECK_CRON
         value: 0 7 * * *
